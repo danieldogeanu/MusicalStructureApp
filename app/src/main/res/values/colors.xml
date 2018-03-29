@@ -2,5 +2,9 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">@color/colorDirtyWhite</color>
+
+    <color name="colorDirtyWhite">#f1f1f1</color>
+    <color name="colorTransparentDirtyWhite">#b4f1f1f1</color>
+    <color name="colorPurple">#5a00ba</color>
 </resources>
