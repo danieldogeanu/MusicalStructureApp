@@ -43,13 +43,14 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Music"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:text="M u s i c"
                 android:textAllCaps="true"
-                android:textColor="@color/colorTransparentDirtyWhite"
-                android:gravity="center" />
+                android:textColor="@color/colorTransparentDirtyWhite" />
 
             <ImageButton
                 android:id="@+id/searchBtn"
@@ -68,7 +69,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
             app:tabTextColor="@color/colorTransparentDirtyWhite"
-            app:tabSelectedTextColor="@color/colorDirtyWhite">
+            app:tabSelectedTextColor="@color/colorDirtyWhite"
+            app:tabTextAppearance="@style/MontserratTab"
+            >
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
