@@ -2,93 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    style="@style/MatchParent"
     tools:context="com.danieldogeanu.android.musicalstructureapp.MainActivity">
 
     <LinearLayout
         android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="126dp"
-        android:paddingTop="26dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:orientation="vertical"
-        android:background="@drawable/header_bg">
+        style="@style/Header">
 
         <LinearLayout
             android:id="@+id/action_bar"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal">
+            style="@style/HeaderActionBar">
 
             <ImageButton
                 android:id="@+id/menuBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
                 android:contentDescription="@string/cd_menu"
-                android:background="?android:attr/selectableItemBackground"
                 android:visibility="visible"
-                app:srcCompat="@drawable/btn_menu" />
+                app:srcCompat="@drawable/btn_menu"
+                style="@style/HeaderActionButton" />
 
             <ImageButton
                 android:id="@+id/backBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
                 android:contentDescription="@string/cd_back"
-                android:background="?android:attr/selectableItemBackground"
                 android:visibility="gone"
-                app:srcCompat="@drawable/btn_back" />
+                app:srcCompat="@drawable/btn_back"
+                style="@style/HeaderActionButton" />
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat"
-                android:gravity="center"
                 android:text="@string/title_default"
-                android:textAllCaps="true"
-                android:textColor="@color/colorTransparentDirtyWhite" />
+                style="@style/HeaderTitle" />
 
             <ImageButton
                 android:id="@+id/searchBtn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
                 android:contentDescription="@string/cd_search"
-                android:background="?android:attr/selectableItemBackground"
-                app:srcCompat="@drawable/btn_search" />
+                app:srcCompat="@drawable/btn_search"
+                style="@style/HeaderActionButton" />
 
         </LinearLayout>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            app:tabTextColor="@color/colorTransparentDirtyWhite"
-            app:tabSelectedTextColor="@color/colorDirtyWhite"
-            app:tabTextAppearance="@style/MontserratTab"
-            >
+            style="@style/HeaderTabLayout">
 
             <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WrapContent"
                 android:text="@string/cat_songs" />
 
             <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WrapContent"
                 android:text="@string/cat_artists" />
 
             <android.support.design.widget.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/WrapContent"
                 android:text="@string/cat_albums" />
 
         </android.support.design.widget.TabLayout>
