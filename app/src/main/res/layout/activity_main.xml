@@ -27,7 +27,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
-                android:contentDescription="Menu"
+                android:contentDescription="@string/cd_menu"
                 android:background="?android:attr/selectableItemBackground"
                 android:visibility="visible"
                 app:srcCompat="@drawable/btn_menu" />
@@ -37,6 +37,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
+                android:contentDescription="@string/cd_back"
                 android:background="?android:attr/selectableItemBackground"
                 android:visibility="gone"
                 app:srcCompat="@drawable/btn_back" />
@@ -49,7 +50,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat"
                 android:gravity="center"
-                android:text="M u s i c"
+                android:text="@string/title_default"
                 android:textAllCaps="true"
                 android:textColor="@color/colorTransparentDirtyWhite" />
 
@@ -58,7 +59,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
-                android:contentDescription="Search"
+                android:contentDescription="@string/cd_search"
                 android:background="?android:attr/selectableItemBackground"
                 app:srcCompat="@drawable/btn_search" />
 
@@ -78,17 +79,17 @@
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Songs" />
+                android:text="@string/cat_songs" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Artists" />
+                android:text="@string/cat_artists" />
 
             <android.support.design.widget.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Albums" />
+                android:text="@string/cat_albums" />
 
         </android.support.design.widget.TabLayout>
 
