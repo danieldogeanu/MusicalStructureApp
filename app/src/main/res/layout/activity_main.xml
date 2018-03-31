@@ -27,6 +27,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
+                android:contentDescription="Menu"
                 android:background="?android:attr/selectableItemBackground"
                 android:visibility="visible"
                 app:srcCompat="@drawable/btn_menu" />
@@ -57,6 +58,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_margin="10dp"
+                android:contentDescription="Search"
                 android:background="?android:attr/selectableItemBackground"
                 app:srcCompat="@drawable/btn_search" />
 
