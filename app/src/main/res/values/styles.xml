@@ -68,6 +68,7 @@
         <item name="tabTextColor">@color/colorTransparentDirtyWhite</item>
         <item name="tabSelectedTextColor">@color/colorDirtyWhite</item>
         <item name="tabTextAppearance">@style/HeaderTabText</item>
+        <item name="tabIndicatorColor">@color/colorDirtyWhite</item>
     </style>
 
 </resources>
