@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">@color/colorDirtyWhite</color>
+    <color name="colorPrimary">@color/colorElectricViolet</color>
+    <color name="colorPrimaryDark">@color/colorElectricIndigo</color>
+    <color name="colorAccent">@color/colorElectricPink</color>
 
     <color name="colorDirtyWhite">#f1f1f1</color>
     <color name="colorTransparentDirtyWhite">#b4f1f1f1</color>
-    <color name="colorPurple">#5a00ba</color>
+
+    <color name="colorHaitiGray">#24212a</color>
+    <color name="colorBlackMarlin">#3d3a43</color>
+    <color name="colorMulledWine">#4c4852</color>
+
+    <color name="colorElectricIndigo">#4d00db</color>
+    <color name="colorElectricViolet">#7f00f7</color>
+    <color name="colorElectricPurple">#9b00ff</color>
+    <color name="colorElectricPink">#b800ff</color>
+    <color name="colorLightElectricPink">#cd00ff</color>
+
+    <color name="colorDarkViolet">#6200ca</color>
+    <color name="colorHeliotrope">#d351ff</color>
 </resources>
