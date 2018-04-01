@@ -7,5 +7,5 @@
         android:state_pressed="true"
         android:drawable="@drawable/ic_search" />
     <item
-        android:drawable="@drawable/ic_search_transparent" />
+        android:drawable="@drawable/ic_search_active" />
 </selector>
