@@ -5,7 +5,7 @@
     android:exitFadeDuration="@android:integer/config_mediumAnimTime">
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/ic_search" />
+        android:drawable="@drawable/ic_search_pressed" />
     <item
-        android:drawable="@drawable/ic_search_active" />
+        android:drawable="@drawable/ic_search" />
 </selector>

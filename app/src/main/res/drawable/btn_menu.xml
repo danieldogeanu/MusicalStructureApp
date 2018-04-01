@@ -5,7 +5,7 @@
     android:exitFadeDuration="@android:integer/config_mediumAnimTime">
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/ic_menu" />
+        android:drawable="@drawable/ic_menu_pressed" />
     <item
-        android:drawable="@drawable/ic_menu_active" />
+        android:drawable="@drawable/ic_menu" />
 </selector>
