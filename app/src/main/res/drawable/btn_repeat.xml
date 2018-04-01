@@ -5,7 +5,10 @@
     android:exitFadeDuration="@android:integer/config_mediumAnimTime">
     <item
         android:state_pressed="true"
-        android:drawable="@drawable/ic_repeat" />
-    <item
         android:drawable="@drawable/ic_repeat_active" />
+    <item
+        android:state_active="true"
+        android:drawable="@drawable/ic_repeat_active" />
+    <item
+        android:drawable="@drawable/ic_repeat" />
 </selector>
