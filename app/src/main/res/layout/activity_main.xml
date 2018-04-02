@@ -59,10 +59,10 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listView"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/header" />
 
     <LinearLayout
