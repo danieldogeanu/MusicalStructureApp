@@ -71,4 +71,63 @@
         <item name="tabIndicatorColor">@color/colorDirtyWhite</item>
     </style>
 
+    <style name="MediaControlsContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:background">@color/colorDirtyWhite</item>
+    </style>
+
+    <style name="SeekContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">-4dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SeekTime">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="SeekBar">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="MediaControls">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="InnerMediaButton">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+    </style>
+
+    <style name="MiddleMediaButton">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+    </style>
+
+    <style name="OuterMediaButton">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+    </style>
+
 </resources>

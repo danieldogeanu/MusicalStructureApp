@@ -6,6 +6,12 @@
     <string name="cd_menu">Menu</string>
     <string name="cd_search">Search</string>
     <string name="cd_back">Back</string>
+    <string name="cd_shuffle">Shuffle</string>
+    <string name="cd_previous">Previous</string>
+    <string name="cd_play">Play</string>
+    <string name="cd_pause">Pause</string>
+    <string name="cd_next">Next</string>
+    <string name="cd_repeat">Repeat</string>
 
     <!--CATEGORIES/TABS-->
     <string name="cat_songs">Songs</string>
