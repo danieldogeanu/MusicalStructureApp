@@ -14,7 +14,7 @@
             tools:text="The Aftertaste" />
 
         <TextView
-            android:id="@+id/artistSongs"
+            android:id="@+id/artistData"
             style="@style/SongArtist"
             tools:text="6 Songs \u2014 1 Album" />
 

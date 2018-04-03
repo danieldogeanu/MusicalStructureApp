@@ -45,7 +45,6 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         // TODO: Add a way to open Song Details activity.
         // TODO: Add a way to keep state for Song Playing. Maybe add this in the Song class itself.
-        // TODO: Add a way to switch layout, according to category (Songs, Artists, Albums).
 
         return listItemView;
     }

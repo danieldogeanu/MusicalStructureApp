@@ -34,11 +34,12 @@ public class ArtistsFragment extends Fragment {
         songs.add(new Song("Adam & Eva", "The Aftertaste", "Feel the Sound Punch", "3:51", ""));
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        SongAdapter adapter = new SongAdapter(getActivity(), songs, listView);
+        ArtistAdapter adapter = new ArtistAdapter(getActivity(), songs, listView);
         listView.setAdapter(adapter);
 
         // TODO: Add setOnItemClickListener to handle item clicks in order to play music.
         // TODO: There are two kind of clicks that need to be handled: 1. On the item; to play music. 2. On the songDetails; to open Song Detail activity.
+        // TODO: Add logic to show only one Artist if there are multiple songs with the same Artist.
 
         return rootView;
     }
