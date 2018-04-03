@@ -29,6 +29,14 @@ public class CategoryAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // TODO: Add Fragments for each Category first.
+        switch (position) {
+            case 0:
+                return new SongsFragment();
+            case 1:
+                return new SongsFragment();
+            case 2:
+                return new SongsFragment();
+        }
         return null;
     }
 

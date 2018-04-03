@@ -28,6 +28,7 @@
                 style="@style/HeaderActionButton" />
 
             <TextView
+                android:id="@+id/headerTitle"
                 android:text="@string/title_default"
                 style="@style/HeaderTitle" />
 
@@ -41,21 +42,7 @@
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
-            style="@style/HeaderTabLayout">
-
-            <android.support.design.widget.TabItem
-                style="@style/WrapContent"
-                android:text="@string/cat_songs" />
-
-            <android.support.design.widget.TabItem
-                style="@style/WrapContent"
-                android:text="@string/cat_artists" />
-
-            <android.support.design.widget.TabItem
-                style="@style/WrapContent"
-                android:text="@string/cat_albums" />
-
-        </android.support.design.widget.TabLayout>
+            style="@style/HeaderTabLayout" />
 
     </LinearLayout>
 

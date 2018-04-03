@@ -26,6 +26,12 @@ public class SongsFragment extends Fragment {
         songs.add(new Song("When The Lights Go Out", "The Aftertaste", "Feel the Sound Punch", "3:32", ""));
         songs.add(new Song("Johnny", "The Aftertaste", "Feel the Sound Punch", "4:20", ""));
         songs.add(new Song("Adam & Eva", "The Aftertaste", "Feel the Sound Punch", "3:51", ""));
+        songs.add(new Song("Power", "The Aftertaste", "Feel the Sound Punch", "3:38", ""));
+        songs.add(new Song("Twisted Love", "The Aftertaste", "Feel the Sound Punch", "4:28", ""));
+        songs.add(new Song("Box Of Chocolates", "The Aftertaste", "Feel the Sound Punch", "3:28", ""));
+        songs.add(new Song("When The Lights Go Out", "The Aftertaste", "Feel the Sound Punch", "3:32", ""));
+        songs.add(new Song("Johnny", "The Aftertaste", "Feel the Sound Punch", "4:20", ""));
+        songs.add(new Song("Adam & Eva", "The Aftertaste", "Feel the Sound Punch", "3:51", ""));
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
         SongAdapter adapter = new SongAdapter(getActivity(), songs, listView);
