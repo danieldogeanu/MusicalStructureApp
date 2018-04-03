@@ -71,6 +71,13 @@
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/gradientFade"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@id/mediaControlsContainer"
+        android:background="@drawable/media_controls_bg" />
+
     <LinearLayout
         android:id="@+id/mediaControlsContainer"
         style="@style/MediaControlsContainer">
