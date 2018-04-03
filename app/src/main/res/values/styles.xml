@@ -185,4 +185,39 @@
         <item name="android:background">?android:attr/actionBarItemBackground</item>
     </style>
 
+    <style name="EmptyListContainer">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="EmptyListImage">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:src">@drawable/ic_notes_large</item>
+    </style>
+
+    <style name="EmptyListMessage">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/colorSpunPearl</item>
+    </style>
+
+    <style name="EmptyListButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:background">@drawable/btn_cta</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/colorDirtyWhite</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing" tools:targetApi="21">0.05</item>
+    </style>
+
 </resources>

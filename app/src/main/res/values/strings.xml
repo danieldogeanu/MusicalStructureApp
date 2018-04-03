@@ -14,11 +14,15 @@
     <string name="cd_repeat">Repeat</string>
     <string name="cd_more">More</string>
     <string name="cd_playing">Playing</string>
+    <string name="cd_empty">Empty List</string>
 
     <!--CATEGORIES/TABS-->
     <string name="cat_songs">Songs</string>
     <string name="cat_artists">Artists</string>
     <string name="cat_albums">Albums</string>
+
+    <string name="empty_list">It seems that your library is empty.</string>
+    <string name="add_media_btn">Add Music</string>
 
 
 </resources>

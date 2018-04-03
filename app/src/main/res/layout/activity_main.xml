@@ -61,9 +61,30 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header" />
+
+    <LinearLayout
+        android:id="@+id/emptyList"
+        android:visibility="visible"
+        style="@style/EmptyListContainer">
+
+        <ImageView
+            android:contentDescription="@string/cd_empty"
+            style="@style/EmptyListImage" />
+
+        <TextView
+            android:text="@string/empty_list"
+            style="@style/EmptyListMessage" />
+
+        <Button
+            android:id="@+id/addMediaBtn"
+            android:text="@string/add_media_btn"
+            style="@style/EmptyListButton" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/mediaControlsContainer"
