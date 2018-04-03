@@ -12,6 +12,8 @@
     <string name="cd_pause">Pause</string>
     <string name="cd_next">Next</string>
     <string name="cd_repeat">Repeat</string>
+    <string name="cd_more">More</string>
+    <string name="cd_playing">Playing</string>
 
     <!--CATEGORIES/TABS-->
     <string name="cat_songs">Songs</string>
