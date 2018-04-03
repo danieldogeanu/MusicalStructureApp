@@ -8,6 +8,7 @@
     <ImageView
         android:id="@+id/songPlaying"
         android:visibility="gone"
+        android:contentDescription="@string/cd_playing"
         style="@style/SongPlaying" />
 
     <LinearLayout
