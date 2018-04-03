@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/albumItem"
+    style="@style/SongItemContainer">
+
+    <LinearLayout
+        style="@style/SongTitleGroup">
+
+        <TextView
+            android:id="@+id/albumTitle"
+            style="@style/SongTitle"
+            tools:text="Feel the Sound Punch" />
+
+        <TextView
+            android:id="@+id/albumArtist"
+            style="@style/SongArtist"
+            tools:text="The Aftertaste" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/albumList"
+        android:contentDescription="@string/cd_more"
+        app:srcCompat="@drawable/btn_more"
+        style="@style/SongDetailsButton" />
+
+</LinearLayout>

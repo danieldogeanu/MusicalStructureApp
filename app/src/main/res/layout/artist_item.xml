@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/artistItem"
+    style="@style/SongItemContainer">
+
+    <LinearLayout
+        style="@style/SongTitleGroup">
+
+        <TextView
+            android:id="@+id/artistName"
+            style="@style/SongTitle"
+            tools:text="The Aftertaste" />
+
+        <TextView
+            android:id="@+id/artistSongs"
+            style="@style/SongArtist"
+            tools:text="6 Songs \u2014 1 Album" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/artistList"
+        android:contentDescription="@string/cd_more"
+        app:srcCompat="@drawable/btn_more"
+        style="@style/SongDetailsButton" />
+
+</LinearLayout>
