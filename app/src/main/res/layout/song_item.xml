@@ -27,8 +27,8 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/songLength"
-        style="@style/SongLength"
+        android:id="@+id/songDuration"
+        style="@style/SongDuration"
         tools:text="4:28"/>
 
     <ImageButton
