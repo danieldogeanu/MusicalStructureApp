@@ -9,10 +9,15 @@ public class Album implements Serializable {
     private String mAlbumArtist;
     private ArrayList<Song> mSongsInAlbum = new ArrayList<>();
 
-    public Album(String albumName, String albumArtist, ArrayList<Song> songsInAlbum) {
+    public Album(String albumName, String albumArtist) {
         mAlbumName = albumName;
         mAlbumArtist = albumArtist;
-        mSongsInAlbum = songsInAlbum;
+    }
+
+    public void addSong(Song song) {
+        if (!mSongsInAlbum.contains(song)) {
+            mSongsInAlbum.add(song);
+        }
     }
 
     public String getAlbumName() {
@@ -32,7 +37,7 @@ public class Album implements Serializable {
         return "Album { " +
                 "mAlbumName='" + mAlbumName + "', " +
                 "mAlbumArtist='" + mAlbumArtist + "', " +
-                "mSongsInAlbum='" + mSongsInAlbum.toString() + "' }";
+                "mSongsInAlbum=" + mSongsInAlbum.toString() + " }";
     }
 
 }

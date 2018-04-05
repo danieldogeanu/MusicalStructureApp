@@ -10,11 +10,21 @@ public class Artist implements Serializable {
     private int mArtistAlbumsCount;
     private ArrayList<Song> mSongsByArtist = new ArrayList<>();
 
-    public Artist(String artistName, int songsCount, int albumsCount, ArrayList<Song> songsByArtist) {
+    public Artist(String artistName) {
         mArtistName = artistName;
-        mArtistSongsCount = songsCount;
-        mArtistAlbumsCount = albumsCount;
-        mSongsByArtist = songsByArtist;
+    }
+
+    public void setAlbumCount(int count) {
+        if (mArtistAlbumsCount == 0) {
+            mArtistAlbumsCount = count;
+        }
+    }
+
+    public void addSong(Song song) {
+        if (!mSongsByArtist.contains(song)) {
+            mSongsByArtist.add(song);
+        }
+        mArtistSongsCount = mSongsByArtist.size();
     }
 
     public String getArtistName() {
@@ -39,6 +49,6 @@ public class Artist implements Serializable {
                 "mArtistName='" + mArtistName + "', " +
                 "mArtistSongsCount='" + mArtistSongsCount + "', " +
                 "mArtistAlbumsCount='" + mArtistAlbumsCount + "', " +
-                "mSongsByArtist='" + mSongsByArtist.toString() + "' }";
+                "mSongsByArtist=" + mSongsByArtist.toString() + " }";
     }
 }
