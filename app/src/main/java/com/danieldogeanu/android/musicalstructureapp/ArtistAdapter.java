@@ -12,15 +12,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ArtistAdapter extends ArrayAdapter<Song> {
+public class ArtistAdapter extends ArrayAdapter<Artist> {
 
     public static final String LOG_TAG = ArtistAdapter.class.getSimpleName();
 
-    private ListView mSongListView;
+    private ListView mArtistListView;
 
-    public ArtistAdapter(Activity context, ArrayList<Song> songs, ListView view) {
-        super(context, 0, songs);
-        mSongListView = view;
+    public ArtistAdapter(Activity context, ArrayList<Artist> artists, ListView view) {
+        super(context, 0, artists);
+        mArtistListView = view;
     }
 
     @NonNull
@@ -32,15 +32,17 @@ public class ArtistAdapter extends ArrayAdapter<Song> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.artist_item, parent, false);
         }
 
-        Song currentSong = getItem(position);
+        Artist currentArtist = getItem(position);
 
         TextView artistName = (TextView) listItemView.findViewById(R.id.artistName);
-        artistName.setText(currentSong.getSongArtist());
+        artistName.setText(currentArtist.getArtistName());
 
         TextView artistData = (TextView) listItemView.findViewById(R.id.artistData);
-        artistData.setText("6 Songs \u2014 1 Album");
+        String artistSongsText = listItemView.getResources().getQuantityString(R.plurals.number_of_songs, currentArtist.getArtistSongsCount(), currentArtist.getArtistSongsCount());
+        String artistAlbumText = listItemView.getResources().getQuantityString(R.plurals.number_of_albums, currentArtist.getArtistAlbumsCount(), currentArtist.getArtistAlbumsCount());
+        String artistDataText = listItemView.getResources().getString(R.string.artist_data, artistSongsText, artistAlbumText);
+        artistData.setText(artistDataText);
 
-        // TODO: Create logic to get artist data.
         // TODO: Add a way to open Artist List activity.
 
         return listItemView;

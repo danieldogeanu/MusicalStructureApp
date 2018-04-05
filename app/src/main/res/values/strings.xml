@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Music App</string>
     <string name="title_default">Music</string>
 
@@ -23,6 +23,16 @@
 
     <string name="empty_list">It seems that your library is empty.</string>
     <string name="add_media_btn">Add Music</string>
+    
+    <plurals name="number_of_songs">
+        <item quantity="one">%d Song</item>
+        <item quantity="other">%d Songs</item>
+    </plurals>
+    <plurals name="number_of_albums">
+        <item quantity="one">%d Album</item>
+        <item quantity="other">%d Albums</item>
+    </plurals>
+    <string name="artist_data"><xliff:g id="songs">%1$s</xliff:g> &#160;\u2014&#160; <xliff:g id="albums">%2$s</xliff:g></string>
 
 
 </resources>
