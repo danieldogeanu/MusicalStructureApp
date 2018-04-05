@@ -72,11 +72,8 @@
     </LinearLayout>
 
     <View
-        android:id="@+id/gradientFade"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_above="@id/mediaControlsContainer"
-        android:background="@drawable/media_controls_bg" />
+        android:id="@+id/mediaGradientFade"
+        style="@style/MediaGradientFade" />
 
     <LinearLayout
         android:id="@+id/mediaControlsContainer"

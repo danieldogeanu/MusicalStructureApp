@@ -83,6 +83,13 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <style name="MediaGradientFade">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_above">@id/mediaControlsContainer</item>
+        <item name="android:background">@drawable/media_controls_bg</item>
+    </style>
+
     <style name="MediaControlsContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
