@@ -18,6 +18,11 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <style name="MatchWrap">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <style name="Header">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">126dp</item>
@@ -82,6 +87,13 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:paddingBottom">110dp</item>
+    </style>
+
+    <style name="MediaControlsFragmentContainer">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
     </style>
 
     <style name="MediaGradientFade">

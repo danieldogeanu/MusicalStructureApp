@@ -1,0 +1,88 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent"
+    tools:context="com.danieldogeanu.android.musicalstructureapp.MediaControlsFragment">
+
+    <RelativeLayout
+        style="@style/MatchWrap">
+
+        <View
+            android:id="@+id/mediaGradientFade"
+            style="@style/MediaGradientFade" />
+
+        <LinearLayout
+            android:id="@+id/mediaControlsContainer"
+            style="@style/MediaControlsContainer">
+
+            <LinearLayout
+                android:id="@+id/seekContainer"
+                style="@style/SeekContainer">
+
+                <TextView
+                    android:id="@+id/seekCurrentTime"
+                    style="@style/SeekTime"
+                    android:text="0:34" />
+
+                <SeekBar
+                    android:id="@+id/seekBar"
+                    style="@style/SeekBar"
+                    tools:progress="36" />
+
+                <TextView
+                    android:id="@+id/seekTotalTime"
+                    style="@style/SeekTime"
+                    android:text="4:23" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mediaControls"
+                style="@style/MediaControls">
+
+                <ImageButton
+                    android:id="@+id/shuffleBtn"
+                    android:contentDescription="@string/cd_shuffle"
+                    app:srcCompat="@drawable/btn_shuffle"
+                    style="@style/OuterMediaButton" />
+
+                <ImageButton
+                    android:id="@+id/previousBtn"
+                    android:contentDescription="@string/cd_previous"
+                    app:srcCompat="@drawable/btn_previous"
+                    style="@style/InnerMediaButton" />
+
+                <ImageButton
+                    android:id="@+id/playBtn"
+                    android:contentDescription="@string/cd_play"
+                    app:srcCompat="@drawable/btn_play"
+                    android:visibility="visible"
+                    style="@style/MiddleMediaButton" />
+
+                <ImageButton
+                    android:id="@+id/pauseBtn"
+                    android:contentDescription="@string/cd_pause"
+                    app:srcCompat="@drawable/btn_pause"
+                    android:visibility="gone"
+                    style="@style/MiddleMediaButton" />
+
+                <ImageButton
+                    android:id="@+id/nextBtn"
+                    android:contentDescription="@string/cd_next"
+                    app:srcCompat="@drawable/btn_next"
+                    style="@style/InnerMediaButton" />
+
+                <ImageButton
+                    android:id="@+id/repeatBtn"
+                    android:contentDescription="@string/cd_repeat"
+                    app:srcCompat="@drawable/btn_repeat"
+                    style="@style/OuterMediaButton" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</FrameLayout>
