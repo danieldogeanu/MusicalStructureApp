@@ -23,7 +23,7 @@
 
     <string name="empty_list">It seems that your library is empty.</string>
     <string name="add_media_btn">Add Music</string>
-    
+
     <plurals name="number_of_songs">
         <item quantity="one">%d Song</item>
         <item quantity="other">%d Songs</item>
@@ -33,6 +33,5 @@
         <item quantity="other">%d Albums</item>
     </plurals>
     <string name="artist_data"><xliff:g id="songs">%1$s</xliff:g> &#160;\u2014&#160; <xliff:g id="albums">%2$s</xliff:g></string>
-
 
 </resources>

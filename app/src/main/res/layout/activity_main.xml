@@ -9,36 +9,11 @@
         android:id="@+id/header"
         style="@style/Header">
 
-        <LinearLayout
-            android:id="@+id/actionBar"
-            style="@style/HeaderActionBar">
-
-            <ImageButton
-                android:id="@+id/menuBtn"
-                android:contentDescription="@string/cd_menu"
-                android:visibility="visible"
-                app:srcCompat="@drawable/btn_menu"
-                style="@style/HeaderActionButton" />
-
-            <ImageButton
-                android:id="@+id/backBtn"
-                android:contentDescription="@string/cd_back"
-                android:visibility="gone"
-                app:srcCompat="@drawable/btn_back"
-                style="@style/HeaderActionButton" />
-
-            <TextView
-                android:id="@+id/headerTitle"
-                android:text="@string/title_default"
-                style="@style/HeaderTitle" />
-
-            <ImageButton
-                android:id="@+id/searchBtn"
-                android:contentDescription="@string/cd_search"
-                app:srcCompat="@drawable/btn_search"
-                style="@style/HeaderActionButton" />
-
-        </LinearLayout>
+        <fragment
+            android:name="com.danieldogeanu.android.musicalstructureapp.HeaderActionBar"
+            android:id="@+id/headerActionBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
