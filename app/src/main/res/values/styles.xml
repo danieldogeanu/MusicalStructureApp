@@ -33,6 +33,10 @@
         <item name="android:background">@drawable/header_bg</item>
     </style>
 
+    <style name="CompactHeader" parent="Header">
+        <item name="android:layout_height">60dp</item>
+    </style>
+
     <style name="HeaderActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">60dp</item>
@@ -86,6 +90,14 @@
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingBottom">110dp</item>
+    </style>
+
+    <style name="ActivityListView">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_below">@id/header</item>
         <item name="android:paddingBottom">110dp</item>
     </style>
 
