@@ -8,11 +8,9 @@
         android:id="@+id/header"
         style="@style/CompactHeader">
 
-        <fragment
-            android:name="com.danieldogeanu.android.musicalstructureapp.HeaderActionBar"
-            android:id="@+id/headerActionBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <include
+            layout="@layout/header_action_bar"
+            android:id="@+id/headerActionBar" />
 
     </LinearLayout>
 

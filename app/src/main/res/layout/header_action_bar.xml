@@ -1,38 +1,32 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MatchParent"
-    tools:context="com.danieldogeanu.android.musicalstructureapp.HeaderActionBar">
+    android:id="@+id/actionBar"
+    style="@style/HeaderActionBar">
 
-    <LinearLayout
-        android:id="@+id/actionBar"
-        style="@style/HeaderActionBar">
+    <ImageButton
+        android:id="@+id/menuBtn"
+        android:contentDescription="@string/cd_menu"
+        android:visibility="visible"
+        app:srcCompat="@drawable/btn_menu"
+        style="@style/HeaderActionButton" />
 
-        <ImageButton
-            android:id="@+id/menuBtn"
-            android:contentDescription="@string/cd_menu"
-            android:visibility="visible"
-            app:srcCompat="@drawable/btn_menu"
-            style="@style/HeaderActionButton" />
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:contentDescription="@string/cd_back"
+        android:visibility="gone"
+        app:srcCompat="@drawable/btn_back"
+        style="@style/HeaderActionButton" />
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:contentDescription="@string/cd_back"
-            android:visibility="gone"
-            app:srcCompat="@drawable/btn_back"
-            style="@style/HeaderActionButton" />
+    <TextView
+        android:id="@+id/headerTitle"
+        android:text="@string/title_default"
+        style="@style/HeaderTitle" />
 
-        <TextView
-            android:id="@+id/headerTitle"
-            android:text="@string/title_default"
-            style="@style/HeaderTitle" />
+    <ImageButton
+        android:id="@+id/searchBtn"
+        android:contentDescription="@string/cd_search"
+        app:srcCompat="@drawable/btn_search"
+        style="@style/HeaderActionButton" />
 
-        <ImageButton
-            android:id="@+id/searchBtn"
-            android:contentDescription="@string/cd_search"
-            app:srcCompat="@drawable/btn_search"
-            style="@style/HeaderActionButton" />
-
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>
