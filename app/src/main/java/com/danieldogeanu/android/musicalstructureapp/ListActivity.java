@@ -21,13 +21,23 @@ public class ListActivity extends AppCompatActivity {
         ImageButton backButton = findViewById(R.id.backBtn);
         backButton.setVisibility(View.VISIBLE);
 
-        // Get Artist Object
-        Artist thisArtist = (Artist) getIntent().getSerializableExtra("artist_data");
-
-        ArrayList<Song> songsByThisArtist = thisArtist.getSongsByArtist();
-
         ListView listView = (ListView) findViewById(R.id.activityListView);
-        SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist, listView);
-        listView.setAdapter(adapter);
+
+        // Get Data
+        Artist thisArtist = (Artist) getIntent().getSerializableExtra("artist_data");
+        Album thisAlbum = (Album) getIntent().getSerializableExtra("album_data");
+
+        if (thisArtist != null) {
+            ArrayList<Song> songsByThisArtist = thisArtist.getSongsByArtist();
+            SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist, listView);
+            listView.setAdapter(adapter);
+        }
+
+        if (thisAlbum != null) {
+            ArrayList<Song> songsOnThisAlbum = thisAlbum.getSongsInAlbum();
+            SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum, listView);
+            listView.setAdapter(adapter);
+        }
+
     }
 }
