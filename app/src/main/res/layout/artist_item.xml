@@ -21,7 +21,7 @@
     </LinearLayout>
 
     <ImageButton
-        android:id="@+id/artistList"
+        android:id="@+id/artistListBtn"
         android:contentDescription="@string/cd_more"
         app:srcCompat="@drawable/btn_more"
         style="@style/SongDetailsButton" />

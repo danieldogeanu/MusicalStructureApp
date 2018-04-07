@@ -34,7 +34,7 @@
     </style>
 
     <style name="CompactHeader" parent="Header">
-        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_height">86dp</item>
     </style>
 
     <style name="HeaderActionBar">
@@ -104,7 +104,7 @@
     <style name="MediaControlsFragmentContainer">
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">130dp</item>
         <item name="android:layout_alignParentBottom">true</item>
     </style>
 
@@ -181,6 +181,10 @@
         <item name="android:paddingStart">16dp</item>
         <item name="android:paddingEnd">16dp</item>
         <item name="android:gravity">center_vertical</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:descendantFocusability">blocksDescendants</item>
     </style>
 
     <style name="SongPlaying">

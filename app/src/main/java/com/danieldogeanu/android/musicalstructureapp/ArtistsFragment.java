@@ -1,11 +1,13 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -20,14 +22,24 @@ public class ArtistsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.list, container, false);
 
         Data data = new Data();
-        ArrayList<Artist> artists = data.getArtists();
+        final ArrayList<Artist> artists = data.getArtists();
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
         ArtistAdapter adapter = new ArtistAdapter(getActivity(), artists, listView);
         listView.setAdapter(adapter);
 
-        // TODO: Add setOnItemClickListener to handle item clicks in order to play music.
-        // TODO: There are two kind of clicks that need to be handled: 1. On the item; to play music. 2. On the songDetails; to open Song Detail activity.
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Artist thisArtist = artists.get(position);
+
+                Intent listActivity = new Intent(getContext(), ListActivity.class);
+                listActivity.putExtra("artist_data", thisArtist);
+                startActivity(listActivity);
+
+            }
+        });
 
         return rootView;
     }

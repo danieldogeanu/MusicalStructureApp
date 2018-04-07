@@ -1,12 +1,14 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,7 +34,7 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.artist_item, parent, false);
         }
 
-        Artist currentArtist = getItem(position);
+        final Artist currentArtist = getItem(position);
 
         TextView artistName = (TextView) listItemView.findViewById(R.id.artistName);
         artistName.setText(currentArtist.getArtistName());
@@ -43,7 +45,15 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         String artistDataText = listItemView.getResources().getString(R.string.artist_data, artistSongsText, artistAlbumText);
         artistData.setText(artistDataText);
 
-        // TODO: Add a way to open Artist List activity.
+        ImageButton artistListBtn = (ImageButton) listItemView.findViewById(R.id.artistListBtn);
+        artistListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent thisIntent = new Intent(getContext(), ListActivity.class);
+                thisIntent.putExtra("artist_data", currentArtist);
+                getContext().startActivity(thisIntent);
+            }
+        });
 
         return listItemView;
     }
