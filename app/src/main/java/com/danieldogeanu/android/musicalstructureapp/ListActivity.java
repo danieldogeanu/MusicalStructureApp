@@ -1,9 +1,7 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,11 +13,8 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        ImageButton menuButton = findViewById(R.id.menuBtn);
-        menuButton.setVisibility(View.GONE);
-
-        ImageButton backButton = findViewById(R.id.backBtn);
-        backButton.setVisibility(View.VISIBLE);
+        Utils.deactivateMenuButton(ListActivity.this);
+        Utils.activateBackButton(ListActivity.this);
 
         ListView listView = (ListView) findViewById(R.id.activityListView);
 
