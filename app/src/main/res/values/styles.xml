@@ -37,6 +37,11 @@
         <item name="android:layout_height">86dp</item>
     </style>
 
+    <style name="DetailHeader" parent="Header">
+        <item name="android:layout_height">300dp</item>
+        <item name="android:background">@drawable/detail_bg</item>
+    </style>
+
     <style name="HeaderActionBar">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">60dp</item>
@@ -229,6 +234,59 @@
     <style name="SongDetailsButton">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
+        <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="SongAlbumArt">
+        <item name="android:layout_width">210dp</item>
+        <item name="android:layout_height">210dp</item>
+        <item name="android:layout_marginTop">96dp</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="android:background">@android:drawable/dialog_holo_light_frame</item>
+    </style>
+
+    <style name="SongDetailsContainer">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_above">@id/mediaControlsFragmentContainer</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:layout_marginStart">24dp</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SongDetailGroup">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SongTitleDetail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/colorHaitiGray</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SongArtistDetail" parent="SongTitleDetail">
+        <item name="android:textColor">@color/colorSpunPearl</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="AddSongToButton">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_margin">10dp</item>
         <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 

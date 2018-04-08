@@ -1,6 +1,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Music App</string>
     <string name="title_default">Music</string>
+    <string name="detail_title">Song</string>
 
     <!--CONTENT DESCRIPTIONS-->
     <string name="cd_menu">Menu</string>
@@ -15,6 +16,7 @@
     <string name="cd_more">More</string>
     <string name="cd_playing">Playing</string>
     <string name="cd_empty">Empty List</string>
+    <string name="cd_album">Album Art</string>
 
     <!--CATEGORIES/TABS-->
     <string name="cat_songs">Songs</string>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent">
+
+    <LinearLayout
+        android:id="@+id/header"
+        style="@style/DetailHeader">
+
+        <include
+            layout="@layout/header_action_bar"
+            android:id="@+id/headerActionBar" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/songAlbumArt"
+        android:contentDescription="@string/cd_album"
+        android:src="@drawable/default_album"
+        style="@style/SongAlbumArt"/>
+
+    <LinearLayout
+        android:id="@+id/songDetailsContainer"
+        style="@style/SongDetailsContainer">
+
+        <ImageButton
+            android:id="@+id/addSongToPlaylist"
+            style="@style/AddSongToButton"
+            app:srcCompat="@drawable/btn_playlist"/>
+
+        <LinearLayout
+            android:id="@+id/songDetailGroup"
+            style="@style/SongDetailGroup">
+
+            <TextView
+                android:id="@+id/songTitleDetail"
+                style="@style/SongTitleDetail"
+                tools:text="Twisted Love" />
+
+            <TextView
+                android:id="@+id/songArtistDetail"
+                style="@style/SongArtistDetail"
+                tools:text="The Aftertaste" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/addSongToFavorite"
+            style="@style/AddSongToButton"
+            app:srcCompat="@drawable/btn_favorite" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/mediaControlsFragmentContainer"
+        style="@style/MediaControlsFragmentContainer">
+
+        <fragment
+            android:name="com.danieldogeanu.android.musicalstructureapp.MediaControlsFragment"
+            android:id="@+id/mediaControlsFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</RelativeLayout>
