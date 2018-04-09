@@ -1,14 +1,12 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -42,15 +40,7 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
         String artistDataText = listItemView.getResources().getString(R.string.artist_data, artistSongsText, artistAlbumText);
         Utils.setTextToView(listItemView, R.id.artistData, artistDataText);
 
-        ImageButton artistListBtn = (ImageButton) listItemView.findViewById(R.id.artistListBtn);
-        artistListBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent thisIntent = new Intent(getContext(), ListActivity.class);
-                thisIntent.putExtra("artist_data", currentArtist);
-                getContext().startActivity(thisIntent);
-            }
-        });
+        Utils.addDetailsButtonIntent(listItemView, R.id.artistListBtn, ListActivity.class, "artist_data", currentArtist);
 
         return listItemView;
     }

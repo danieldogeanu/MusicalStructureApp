@@ -50,4 +50,26 @@ public class Utils {
         thisTextView.setText(text);
     }
 
+    public static void addDetailsButtonIntent(final View thisView, int id, final Class activityToOpen, final String dataLabel, final Object dataObject) {
+        ImageButton thisButton = (ImageButton) thisView.findViewById(id);
+        thisButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent thisIntent = new Intent(thisView.getContext(), activityToOpen);
+                if (dataObject instanceof Song) {
+                    Song song = (Song) dataObject;
+                    thisIntent.putExtra(dataLabel, song);
+                } else if (dataObject instanceof Artist) {
+                    Artist artist = (Artist) dataObject;
+                    thisIntent.putExtra(dataLabel, artist);
+                } else if (dataObject instanceof Album) {
+                    Album album = (Album) dataObject;
+                    thisIntent.putExtra(dataLabel, album);
+                }
+                thisView.getContext().startActivity(thisIntent);
+            }
+        });
+
+    }
+
 }
