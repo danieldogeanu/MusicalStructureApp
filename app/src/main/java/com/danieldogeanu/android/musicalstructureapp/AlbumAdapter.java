@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,11 +35,8 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
 
         final Album currentAlbum = getItem(position);
 
-        TextView albumTitle = (TextView) listItemView.findViewById(R.id.albumTitle);
-        albumTitle.setText(currentAlbum.getAlbumName());
-
-        TextView albumArtist = (TextView) listItemView.findViewById(R.id.albumArtist);
-        albumArtist.setText(currentAlbum.getAlbumArtist());
+        Utils.setTextToView(listItemView, R.id.albumTitle, currentAlbum.getAlbumName());
+        Utils.setTextToView(listItemView, R.id.albumArtist, currentAlbum.getAlbumArtist());
 
         ImageButton albumListBtn = (ImageButton) listItemView.findViewById(R.id.albumListBtn);
         albumListBtn.setOnClickListener(new View.OnClickListener() {

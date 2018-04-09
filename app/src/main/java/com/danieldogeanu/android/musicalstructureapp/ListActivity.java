@@ -3,7 +3,6 @@ package com.danieldogeanu.android.musicalstructureapp;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -24,8 +23,7 @@ public class ListActivity extends AppCompatActivity {
         Album thisAlbum = (Album) getIntent().getSerializableExtra("album_data");
 
         if (thisArtist != null) {
-            TextView headerTitle = (TextView) findViewById(R.id.headerTitle);
-            headerTitle.setText(getText(R.string.artist_list_title));
+            Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.artist_list_title));
 
             ArrayList<Song> songsByThisArtist = thisArtist.getSongsByArtist();
             SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist, listView);
@@ -33,8 +31,7 @@ public class ListActivity extends AppCompatActivity {
         }
 
         if (thisAlbum != null) {
-            TextView headerTitle = (TextView) findViewById(R.id.headerTitle);
-            headerTitle.setText(getText(R.string.album_list_title));
+            Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.album_list_title));
 
             ArrayList<Song> songsOnThisAlbum = thisAlbum.getSongsInAlbum();
             SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum, listView);

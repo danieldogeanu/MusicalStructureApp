@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,14 +35,9 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         final Song currentSong = getItem(position);
 
-        TextView songTitle = (TextView) listItemView.findViewById(R.id.songTitle);
-        songTitle.setText(currentSong.getSongTitle());
-
-        TextView songArtist = (TextView) listItemView.findViewById(R.id.songArtist);
-        songArtist.setText(currentSong.getSongArtist());
-
-        TextView songDuration = (TextView) listItemView.findViewById(R.id.songDuration);
-        songDuration.setText(currentSong.getSongDuration());
+        Utils.setTextToView(listItemView, R.id.songTitle, currentSong.getSongTitle());
+        Utils.setTextToView(listItemView, R.id.songArtist, currentSong.getSongArtist());
+        Utils.setTextToView(listItemView, R.id.songDuration, currentSong.getSongDuration());
 
         ImageButton songDetails = (ImageButton) listItemView.findViewById(R.id.songDetails);
         songDetails.setOnClickListener(new View.OnClickListener() {

@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,14 +35,12 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
 
         final Artist currentArtist = getItem(position);
 
-        TextView artistName = (TextView) listItemView.findViewById(R.id.artistName);
-        artistName.setText(currentArtist.getArtistName());
+        Utils.setTextToView(listItemView, R.id.artistName, currentArtist.getArtistName());
 
-        TextView artistData = (TextView) listItemView.findViewById(R.id.artistData);
         String artistSongsText = listItemView.getResources().getQuantityString(R.plurals.number_of_songs, currentArtist.getArtistSongsCount(), currentArtist.getArtistSongsCount());
         String artistAlbumText = listItemView.getResources().getQuantityString(R.plurals.number_of_albums, currentArtist.getArtistAlbumsCount(), currentArtist.getArtistAlbumsCount());
         String artistDataText = listItemView.getResources().getString(R.string.artist_data, artistSongsText, artistAlbumText);
-        artistData.setText(artistDataText);
+        Utils.setTextToView(listItemView, R.id.artistData, artistDataText);
 
         ImageButton artistListBtn = (ImageButton) listItemView.findViewById(R.id.artistListBtn);
         artistListBtn.setOnClickListener(new View.OnClickListener() {

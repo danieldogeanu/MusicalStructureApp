@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class Utils {
 
@@ -37,6 +38,16 @@ public class Utils {
                 thisActivity.finish();
             }
         });
+    }
+
+    public static void setTextToView(final Activity thisActivity, int id, CharSequence text) {
+        TextView thisTextView = (TextView) thisActivity.findViewById(id);
+        thisTextView.setText(text);
+    }
+
+    public static void setTextToView(final View thisView, int id, CharSequence text) {
+        TextView thisTextView = (TextView) thisView.findViewById(id);
+        thisTextView.setText(text);
     }
 
 }
