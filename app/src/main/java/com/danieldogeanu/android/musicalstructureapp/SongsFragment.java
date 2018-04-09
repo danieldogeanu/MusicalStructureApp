@@ -19,7 +19,7 @@ public class SongsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.list, container, false);
 
-        Data data = new Data();
+        Data data = Data.getInstance();
         ArrayList<Song> songs = data.getSongs();
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class Data {
 
+    private static Data INSTANCE = new Data();
+
     private ArrayList<Song> mSongs = new ArrayList<>();
     private ArrayList<Artist> mArtists = new ArrayList<>();
     private ArrayList<Album> mAlbums = new ArrayList<>();
 
-    public Data() {
+    private Data() {
         mSongs.add(new Song("Power", "The Aftertaste", "Feel the Sound Punch", "3:38", ""));
         mSongs.add(new Song("Twisted Love", "The Aftertaste", "Feel the Sound Punch", "4:28", ""));
         mSongs.add(new Song("Box Of Chocolates", "The Aftertaste", "Feel the Sound Punch", "3:28", ""));
@@ -30,6 +32,10 @@ public class Data {
 
         sortAlbums(mSongs);
         sortArtists(mSongs);
+    }
+
+    public static Data getInstance() {
+        return(INSTANCE);
     }
 
     private void sortAlbums(ArrayList<Song> songs) {

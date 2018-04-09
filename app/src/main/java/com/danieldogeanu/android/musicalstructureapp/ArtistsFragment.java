@@ -21,7 +21,7 @@ public class ArtistsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.list, container, false);
 
-        Data data = new Data();
+        Data data = Data.getInstance();
         final ArrayList<Artist> artists = data.getArtists();
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
