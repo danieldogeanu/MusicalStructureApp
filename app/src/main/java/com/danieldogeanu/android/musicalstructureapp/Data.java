@@ -108,7 +108,7 @@ public class Data {
                 File[] filesList = directory.listFiles();
                 if (filesList != null) {
                     for (File file : filesList) {
-                        if (file.isFile()) {
+                        if (file.isFile() && file.getPath().endsWith(".mp3")) {
                             mFilePaths.add(file.getAbsolutePath());
                         } else if (file.isDirectory()) {
                             getFilePaths(file.getAbsolutePath(), true);
