@@ -1,11 +1,16 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
+import android.os.Environment;
+import android.util.Log;
+
+import java.io.File;
 import java.util.ArrayList;
 
 public class Data {
 
     private static Data INSTANCE = new Data();
 
+    private ArrayList<String> mFilePaths = new ArrayList<>();
     private ArrayList<Song> mSongs = new ArrayList<>();
     private ArrayList<Artist> mArtists = new ArrayList<>();
     private ArrayList<Album> mAlbums = new ArrayList<>();
@@ -29,6 +34,10 @@ public class Data {
         mSongs.add(new Song("Control", "Halsey", "Badlands", "3:35", ""));
         mSongs.add(new Song("Gasoline", "Halsey", "Badlands", "3:20", ""));
         mSongs.add(new Song("Castle", "Halsey", "Badlands", "4:38", ""));
+
+        getFilePaths("Music", false);
+        Log.i("FILES", mFilePaths.toString());
+        Log.i("FILES", Integer.toString(mFilePaths.size()));
 
         sortAlbums(mSongs);
         sortArtists(mSongs);
@@ -95,6 +104,33 @@ public class Data {
             }
         }
         return albumCount;
+    }
+
+    private void getFilePaths(String directoryName, boolean isPath) {
+        try {
+            File directory = null;
+            if (!directoryName.isEmpty() && !isPath) {
+                File sdCard = Environment.getExternalStorageDirectory();
+                directory = new File(sdCard.getAbsolutePath() + "/" + directoryName);
+            }
+            if (!directoryName.isEmpty() && isPath) {
+                directory = new File(directoryName);
+            }
+            if (directory != null && directory.exists()) {
+                File[] filesList = directory.listFiles();
+                if (filesList != null) {
+                    for (File file : filesList) {
+                        if (file.isFile()) {
+                            mFilePaths.add(file.getAbsolutePath());
+                        } else if (file.isDirectory()) {
+                            getFilePaths(file.getAbsolutePath(), true);
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<Song> getSongs() {
