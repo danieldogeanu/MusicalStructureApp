@@ -1,10 +1,14 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
+import android.media.MediaMetadataRetriever;
 import android.os.Environment;
 import android.util.Log;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class Data {
 
@@ -16,31 +20,11 @@ public class Data {
     private ArrayList<Album> mAlbums = new ArrayList<>();
 
     private Data() {
-        mSongs.add(new Song("Power", "The Aftertaste", "Feel the Sound Punch", "3:38", ""));
-        mSongs.add(new Song("Twisted Love", "The Aftertaste", "Feel the Sound Punch", "4:28", ""));
-        mSongs.add(new Song("Box Of Chocolates", "The Aftertaste", "Feel the Sound Punch", "3:28", ""));
-        mSongs.add(new Song("When The Lights Go Out", "The Aftertaste", "Feel the Sound Punch", "3:32", ""));
-        mSongs.add(new Song("Johnny", "The Aftertaste", "Feel the Sound Punch", "4:20", ""));
-        mSongs.add(new Song("Adam & Eva", "The Aftertaste", "Feel the Sound Punch", "3:51", ""));
-
-        mSongs.add(new Song("Somebody Special", "Nina Nesbitt", "Somebody Special", "3:19", ""));
-        mSongs.add(new Song("Sunburn", "Droeloe", "Sunburn", "3:47", ""));
-        mSongs.add(new Song("Sit Next to Me", "Foster The People", "Sit Next to Me", "4:03", ""));
-        mSongs.add(new Song("Plot Twist", "Sigrid", "Plot Twist", "3:25", ""));
-        mSongs.add(new Song("OT", "John.K", "OT", "3:12", ""));
-        mSongs.add(new Song("Takes My Body Higher (feat. Lincoln Jesser)", "Shoffy, Lincoln Jesser", "Conversations in the A.M.", "4:12", ""));
-
-        mSongs.add(new Song("Bad At Love", "Halsey", "Hopeless Fountain Kingdom", "3:01", ""));
-        mSongs.add(new Song("Control", "Halsey", "Badlands", "3:35", ""));
-        mSongs.add(new Song("Gasoline", "Halsey", "Badlands", "3:20", ""));
-        mSongs.add(new Song("Castle", "Halsey", "Badlands", "4:38", ""));
-
         getFilePaths("Music", false);
-        Log.i("FILES", mFilePaths.toString());
-        Log.i("FILES", Integer.toString(mFilePaths.size()));
+        if (!mFilePaths.isEmpty()) extractFilesMetadata(mFilePaths);
 
-        sortAlbums(mSongs);
-        sortArtists(mSongs);
+        if (!mSongs.isEmpty()) sortAlbums(mSongs);
+        if (!mSongs.isEmpty()) sortArtists(mSongs);
     }
 
     public static Data getInstance() {
@@ -131,6 +115,37 @@ public class Data {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void extractFilesMetadata(ArrayList<String> filePaths) {
+        MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
+        String songTitle, songArtist, songAlbum, songDuration;
+        long rawDuration;
+
+        for (int i = 0; i < filePaths.size(); i++) {
+            String thisFilePath = filePaths.get(i);
+
+            try {
+                mediaMetadataRetriever.setDataSource(thisFilePath);
+
+                songTitle = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+                songArtist = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+                songAlbum = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+                rawDuration = Long.valueOf(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+                songDuration = (new SimpleDateFormat("m:ss", Locale.US)).format(new Date(rawDuration));
+
+                if (songTitle == null) songTitle = "Untitled";
+                if (songArtist == null) songArtist = "Unknown Artist";
+                if (songAlbum == null) songAlbum = "Unknown Album";
+                if (songDuration == null) songDuration = "0:00";
+
+                mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration, ""));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        mediaMetadataRetriever.release();
     }
 
     public ArrayList<Song> getSongs() {
