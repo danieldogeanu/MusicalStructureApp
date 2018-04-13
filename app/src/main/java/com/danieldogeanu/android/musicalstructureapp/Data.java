@@ -178,43 +178,47 @@ public class Data {
         for (int i = 0; i < filePaths.size(); i++) {
             String thisFilePath = filePaths.get(i);
 
-            try {
-                mediaMetadataRetriever.setDataSource(thisFilePath);
+            if (Utils.fileExists(thisFilePath)) {
+                try {
+                    mediaMetadataRetriever.setDataSource(thisFilePath);
 
-                // Extract Data from Provided File
-                songTitle = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-                songArtist = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
-                songAlbum = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
-                rawDuration = Long.valueOf(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
-                rawAlbumArt = mediaMetadataRetriever.getEmbeddedPicture();
+                    // Extract Data from Provided File
+                    songTitle = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+                    songArtist = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+                    songAlbum = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
+                    rawDuration = Long.valueOf(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
+                    rawAlbumArt = mediaMetadataRetriever.getEmbeddedPicture();
 
-                // Convert Duration into Readable Time
-                songDuration = (new SimpleDateFormat("m:ss", Locale.US)).format(new Date(rawDuration));
+                    // Convert Duration into Readable Time
+                    songDuration = (new SimpleDateFormat("m:ss", Locale.US)).format(new Date(rawDuration));
 
-                // Add Default Names if Those Fields are Empty
-                if (songTitle == null) songTitle = "Untitled";
-                if (songArtist == null) songArtist = "Unknown Artist";
-                if (songAlbum == null) songAlbum = "Unknown Album";
-                if (songDuration == null) songDuration = "0:00";
+                    // Add Default Names if Those Fields are Empty
+                    if (songTitle == null) songTitle = "Untitled";
+                    if (songArtist == null) songArtist = "Unknown Artist";
+                    if (songAlbum == null) songAlbum = "Unknown Album";
+                    if (songDuration == null) songDuration = "0:00";
 
-                // Save the Album Art and Get Image Path
-                if (rawAlbumArt != null) {
-                    if (!songAlbum.equals("Unknown Album")) {
-                        albumArtFileName = songAlbum.toLowerCase().replaceAll("[^A-Za-z0-9]", "");
-                    } else {
-                        albumArtFileName = "unknown_" + i;
+                    // Save the Album Art and Get Image Path
+                    if (rawAlbumArt != null) {
+                        if (!songAlbum.equals("Unknown Album")) {
+                            albumArtFileName = songAlbum.toLowerCase().replaceAll("[^A-Za-z0-9]", "");
+                        } else {
+                            albumArtFileName = "unknown_" + i;
+                        }
+                        savedAlbumArtPath = saveAlbumArt(rawAlbumArt, albumArtFileName);
                     }
-                    savedAlbumArtPath = saveAlbumArt(rawAlbumArt, albumArtFileName);
-                }
 
-                // Fill the Song Data and Add it to the Songs ArrayList
-                if (!savedAlbumArtPath.isEmpty()) {
-                    mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration, savedAlbumArtPath));
-                } else {
-                    mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration));
+                    // Fill the Song Data and Add it to the Songs ArrayList
+                    if (!savedAlbumArtPath.isEmpty()) {
+                        mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration, thisFilePath, savedAlbumArtPath));
+                    } else {
+                        mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration, thisFilePath));
+                    }
+
+                    Log.i("extractFilesMetadata", "Extracted metadata from: " + thisFilePath);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         }
 
@@ -222,24 +226,25 @@ public class Data {
     }
 
     private void loadDemoData() {
-        mSongs.add(new Song("Power", "The Aftertaste", "Feel the Sound Punch", "3:38"));
-        mSongs.add(new Song("Twisted Love", "The Aftertaste", "Feel the Sound Punch", "4:28"));
-        mSongs.add(new Song("Box Of Chocolates", "The Aftertaste", "Feel the Sound Punch", "3:28"));
-        mSongs.add(new Song("When The Lights Go Out", "The Aftertaste", "Feel the Sound Punch", "3:32"));
-        mSongs.add(new Song("Johnny", "The Aftertaste", "Feel the Sound Punch", "4:20"));
-        mSongs.add(new Song("Adam & Eva", "The Aftertaste", "Feel the Sound Punch", "3:51"));
+        String demoFilePath = "android.resource://com.danieldogeanu.android.musicalstructureapp/raw/demo_song";
+        mSongs.add(new Song("Power", "The Aftertaste", "Feel the Sound Punch", "3:38", demoFilePath));
+        mSongs.add(new Song("Twisted Love", "The Aftertaste", "Feel the Sound Punch", "4:28", demoFilePath));
+        mSongs.add(new Song("Box Of Chocolates", "The Aftertaste", "Feel the Sound Punch", "3:28", demoFilePath));
+        mSongs.add(new Song("When The Lights Go Out", "The Aftertaste", "Feel the Sound Punch", "3:32", demoFilePath));
+        mSongs.add(new Song("Johnny", "The Aftertaste", "Feel the Sound Punch", "4:20", demoFilePath));
+        mSongs.add(new Song("Adam & Eva", "The Aftertaste", "Feel the Sound Punch", "3:51", demoFilePath));
 
-        mSongs.add(new Song("Somebody Special", "Nina Nesbitt", "Somebody Special", "3:19"));
-        mSongs.add(new Song("Sunburn", "Droeloe", "Sunburn", "3:47"));
-        mSongs.add(new Song("Sit Next to Me", "Foster The People", "Sit Next to Me", "4:03"));
-        mSongs.add(new Song("Plot Twist", "Sigrid", "Plot Twist", "3:25"));
-        mSongs.add(new Song("OT", "John.K", "OT", "3:12"));
-        mSongs.add(new Song("Takes My Body Higher (feat. Lincoln Jesser)", "Shoffy, Lincoln Jesser", "Conversations in the A.M.", "4:12"));
+        mSongs.add(new Song("Somebody Special", "Nina Nesbitt", "Somebody Special", "3:19", demoFilePath));
+        mSongs.add(new Song("Sunburn", "Droeloe", "Sunburn", "3:47", demoFilePath));
+        mSongs.add(new Song("Sit Next to Me", "Foster The People", "Sit Next to Me", "4:03", demoFilePath));
+        mSongs.add(new Song("Plot Twist", "Sigrid", "Plot Twist", "3:25", demoFilePath));
+        mSongs.add(new Song("OT", "John.K", "OT", "3:12", demoFilePath));
+        mSongs.add(new Song("Takes My Body Higher", "Shoffy, Lincoln Jesser", "Conversations in the A.M.", "4:12", demoFilePath));
 
-        mSongs.add(new Song("Bad At Love", "Halsey", "Hopeless Fountain Kingdom", "3:01"));
-        mSongs.add(new Song("Control", "Halsey", "Badlands", "3:35"));
-        mSongs.add(new Song("Gasoline", "Halsey", "Badlands", "3:20"));
-        mSongs.add(new Song("Castle", "Halsey", "Badlands", "4:38"));
+        mSongs.add(new Song("Bad At Love", "Halsey", "Hopeless Fountain Kingdom", "3:01", demoFilePath));
+        mSongs.add(new Song("Control", "Halsey", "Badlands", "3:35", demoFilePath));
+        mSongs.add(new Song("Gasoline", "Halsey", "Badlands", "3:20", demoFilePath));
+        mSongs.add(new Song("Castle", "Halsey", "Badlands", "4:38", demoFilePath));
     }
 
     public ArrayList<Song> getSongs() {
