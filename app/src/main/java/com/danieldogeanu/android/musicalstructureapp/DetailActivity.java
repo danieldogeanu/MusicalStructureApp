@@ -1,6 +1,7 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -34,9 +35,11 @@ public class DetailActivity extends AppCompatActivity {
             // Set the Song Album Art
             ImageView songAlbumArtView = (ImageView) findViewById(R.id.songAlbumArt);
             if (thisSong.hasAlbumArt()) {
-                ProxyBitmap proxyAlbumArt = thisSong.getSongAlbumArt();
-                Bitmap songAlbumArt = proxyAlbumArt.getBitmap();
-                songAlbumArtView.setImageBitmap(songAlbumArt);
+                String albumArtPath = thisSong.getSongAlbumArt();
+                if (Utils.fileExists(albumArtPath)) {
+                    Bitmap songAlbumArt = BitmapFactory.decodeFile(albumArtPath);
+                    songAlbumArtView.setImageBitmap(songAlbumArt);
+                }
             }
 
             // Set Favorites Button State

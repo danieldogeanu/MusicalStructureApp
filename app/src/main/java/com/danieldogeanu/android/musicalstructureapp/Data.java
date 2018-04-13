@@ -4,8 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 import android.os.Environment;
+import android.util.Log;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -123,13 +128,52 @@ public class Data {
         }
     }
 
+    private String saveAlbumArt(byte[] rawImageData, String fileName) {
+        Bitmap imageData = BitmapFactory.decodeByteArray(rawImageData, 0, rawImageData.length);
+        String filePath = "";
+
+        String storagePath = Environment.getExternalStorageDirectory() + "/AlbumArtData";
+        File storageDir = new File(storagePath);
+
+        if (!storageDir.exists()) {
+            boolean createStorageDir = storageDir.mkdirs();
+            if (createStorageDir) {
+                Log.i("saveAlbumArt", "AlbumArtData directory created.");
+            }
+        }
+
+        if (storageDir.exists()) {
+            try {
+                filePath = storageDir.toString() + "/" + fileName + ".PNG";
+                if (!Utils.fileExists(filePath)) {
+                    FileOutputStream fileOutputStream = new FileOutputStream(filePath);
+                    BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
+
+                    imageData.compress(Bitmap.CompressFormat.PNG, 100, bufferedOutputStream);
+
+                    bufferedOutputStream.flush();
+                    bufferedOutputStream.close();
+                    Log.i("saveAlbumArt", "Created: " + filePath);
+                } else {
+                    Log.i("saveAlbumArt", filePath + " already exists.");
+                }
+            } catch (FileNotFoundException e) {
+                Log.w("saveAlbumArt", "Error saving image file: " + e.getMessage());
+            } catch (IOException e) {
+                Log.w("saveAlbumArt", "IOException: " + e.getMessage());
+            }
+        }
+
+        return filePath;
+    }
+
     private void extractFilesMetadata(ArrayList<String> filePaths) {
         MediaMetadataRetriever mediaMetadataRetriever = new MediaMetadataRetriever();
         String songTitle, songArtist, songAlbum, songDuration;
         long rawDuration;
         byte[] rawAlbumArt;
-        Bitmap songAlbumArt = null;
-        ProxyBitmap proxyAlbumArt = null;
+        String savedAlbumArtPath = "";
+        String albumArtFileName;
 
         for (int i = 0; i < filePaths.size(); i++) {
             String thisFilePath = filePaths.get(i);
@@ -137,25 +181,35 @@ public class Data {
             try {
                 mediaMetadataRetriever.setDataSource(thisFilePath);
 
+                // Extract Data from Provided File
                 songTitle = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
                 songArtist = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
                 songAlbum = mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ALBUM);
                 rawDuration = Long.valueOf(mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION));
                 rawAlbumArt = mediaMetadataRetriever.getEmbeddedPicture();
 
+                // Convert Duration into Readable Time
                 songDuration = (new SimpleDateFormat("m:ss", Locale.US)).format(new Date(rawDuration));
-                if (rawAlbumArt != null) {
-                    songAlbumArt = BitmapFactory.decodeByteArray(rawAlbumArt, 0, rawAlbumArt.length);
-                    proxyAlbumArt = new ProxyBitmap(songAlbumArt); // Made Bitmap Serializable
-                }
 
+                // Add Default Names if Those Fields are Empty
                 if (songTitle == null) songTitle = "Untitled";
                 if (songArtist == null) songArtist = "Unknown Artist";
                 if (songAlbum == null) songAlbum = "Unknown Album";
                 if (songDuration == null) songDuration = "0:00";
 
-                if (songAlbumArt != null) {
-                    mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration, proxyAlbumArt));
+                // Save the Album Art and Get Image Path
+                if (rawAlbumArt != null) {
+                    if (!songAlbum.equals("Unknown Album")) {
+                        albumArtFileName = songAlbum.toLowerCase().replaceAll("[^A-Za-z0-9]", "");
+                    } else {
+                        albumArtFileName = "unknown_" + i;
+                    }
+                    savedAlbumArtPath = saveAlbumArt(rawAlbumArt, albumArtFileName);
+                }
+
+                // Fill the Song Data and Add it to the Songs ArrayList
+                if (!savedAlbumArtPath.isEmpty()) {
+                    mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration, savedAlbumArtPath));
                 } else {
                     mSongs.add(new Song(songTitle, songArtist, songAlbum, songDuration));
                 }

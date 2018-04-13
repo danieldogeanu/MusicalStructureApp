@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.io.File;
+
 public class Utils {
 
     public static void openActivity(final Activity thisActivity, int buttonId, final Class activityToOpen) {
@@ -70,6 +72,11 @@ public class Utils {
             }
         });
 
+    }
+
+    public static boolean fileExists(String filePath) {
+        File file = new File(filePath);
+        return (file.exists());
     }
 
 }

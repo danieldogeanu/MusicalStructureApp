@@ -11,7 +11,7 @@ public class Song implements Serializable {
     private String mSongArtist;
     private String mSongAlbum;
     private String mSongDuration;
-    private ProxyBitmap mSongAlbumArt;
+    private String mSongAlbumArt;
 
     /**
      * The Song Object Constructor used for the cases where there's no Album Art.
@@ -33,9 +33,9 @@ public class Song implements Serializable {
      * @param songArtist The artist of the song.
      * @param songAlbum The album that contains this song.
      * @param songDuration The length of the song.
-     * @param songAlbumArt Album art associated with the song. This is a ProxyBitmap Serializable object.
+     * @param songAlbumArt The file path of the Album Art associated with the song.
      */
-    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, ProxyBitmap songAlbumArt) {
+    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, String songAlbumArt) {
         mSongTitle = songTitle;
         mSongArtist = songArtist;
         mSongAlbum = songAlbum;
@@ -63,18 +63,14 @@ public class Song implements Serializable {
         return mSongDuration;
     }
 
-    /**
-     * @return Returns the album art (ProxyBitmap) of the song, if it contains one.
-     * ProxyBitmap is a serialized object and not the Bitmap itself.
-     * You need to use ProxyBitmap.getBitmap() to get the actual Bitmap.
-     */
-    public ProxyBitmap getSongAlbumArt() {
+    /** @return Returns the file path of the Album Art for the Song. */
+    public String getSongAlbumArt() {
         return mSongAlbumArt;
     }
 
     /** @return Returns true if there's an AlbumArt; false if AlbumArt is empty. */
     public boolean hasAlbumArt() {
-        return (mSongAlbumArt != null);
+        return (!mSongAlbumArt.isEmpty());
     }
 
     /**
@@ -88,7 +84,7 @@ public class Song implements Serializable {
                 "mSongArtist='" + mSongArtist + "', " +
                 "mSongAlbum='" + mSongAlbum + "', " +
                 "mSongDuration='" + mSongDuration + "', " +
-                "mSongAlbumArt='" + hasAlbumArt() + "' }";
+                "mSongAlbumArt='" + mSongAlbumArt + "' }";
     }
 
 }
