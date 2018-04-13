@@ -11,17 +11,31 @@ public class Song implements Serializable {
     private String mSongArtist;
     private String mSongAlbum;
     private String mSongDuration;
-    private String mSongAlbumArt = "";
+    private ProxyBitmap mSongAlbumArt;
 
     /**
-     * Song Object Constructor. Takes 5 fields; all required;
+     * The Song Object Constructor used for the cases where there's no Album Art.
      * @param songTitle The song title.
      * @param songArtist The artist of the song.
      * @param songAlbum The album that contains this song.
      * @param songDuration The length of the song.
-     * @param songAlbumArt Album art associated with the song. This can be empty, but must be passed in the constructor regardless.
      */
-    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, String songAlbumArt) {
+    public Song(String songTitle, String songArtist, String songAlbum, String songDuration) {
+        mSongTitle = songTitle;
+        mSongArtist = songArtist;
+        mSongAlbum = songAlbum;
+        mSongDuration = songDuration;
+    }
+
+    /**
+     * The Song Object Constructor used for the cases where there's an Album Art.
+     * @param songTitle The song title.
+     * @param songArtist The artist of the song.
+     * @param songAlbum The album that contains this song.
+     * @param songDuration The length of the song.
+     * @param songAlbumArt Album art associated with the song. This is a ProxyBitmap Serializable object.
+     */
+    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, ProxyBitmap songAlbumArt) {
         mSongTitle = songTitle;
         mSongArtist = songArtist;
         mSongAlbum = songAlbum;
@@ -49,14 +63,18 @@ public class Song implements Serializable {
         return mSongDuration;
     }
 
-    /** @return Returns the album art of the song, if it contains one. */
-    public String getSongAlbumArt() {
+    /**
+     * @return Returns the album art (ProxyBitmap) of the song, if it contains one.
+     * ProxyBitmap is a serialized object and not the Bitmap itself.
+     * You need to use ProxyBitmap.getBitmap() to get the actual Bitmap.
+     */
+    public ProxyBitmap getSongAlbumArt() {
         return mSongAlbumArt;
     }
 
     /** @return Returns true if there's an AlbumArt; false if AlbumArt is empty. */
     public boolean hasAlbumArt() {
-        return !mSongAlbumArt.isEmpty();
+        return (mSongAlbumArt != null);
     }
 
     /**
@@ -70,7 +88,7 @@ public class Song implements Serializable {
                 "mSongArtist='" + mSongArtist + "', " +
                 "mSongAlbum='" + mSongAlbum + "', " +
                 "mSongDuration='" + mSongDuration + "', " +
-                "mSongAlbumArt='" + mSongAlbumArt + "' }";
+                "mSongAlbumArt='" + hasAlbumArt() + "' }";
     }
 
 }

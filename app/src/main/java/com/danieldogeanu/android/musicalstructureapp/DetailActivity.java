@@ -1,9 +1,11 @@
 package com.danieldogeanu.android.musicalstructureapp;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -28,6 +30,14 @@ public class DetailActivity extends AppCompatActivity {
             // Set Song Title and Song Artist
             Utils.setTextToView(DetailActivity.this, R.id.songTitleDetail, thisSong.getSongTitle());
             Utils.setTextToView(DetailActivity.this, R.id.songArtistDetail, thisSong.getSongArtist());
+
+            // Set the Song Album Art
+            ImageView songAlbumArtView = (ImageView) findViewById(R.id.songAlbumArt);
+            if (thisSong.hasAlbumArt()) {
+                ProxyBitmap proxyAlbumArt = thisSong.getSongAlbumArt();
+                Bitmap songAlbumArt = proxyAlbumArt.getBitmap();
+                songAlbumArtView.setImageBitmap(songAlbumArt);
+            }
 
             // Set Favorites Button State
             final ImageButton favoritesButton = (ImageButton) findViewById(R.id.addSongToFavorite);
