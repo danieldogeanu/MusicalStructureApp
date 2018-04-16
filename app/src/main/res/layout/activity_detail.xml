@@ -27,6 +27,7 @@
         <ImageButton
             android:id="@+id/addSongToPlaylist"
             style="@style/AddSongToButton"
+            android:contentDescription="@string/cd_add_song_to_playlist"
             app:srcCompat="@drawable/btn_playlist"/>
 
         <LinearLayout
@@ -48,6 +49,7 @@
         <ImageButton
             android:id="@+id/addSongToFavorite"
             style="@style/AddSongToButton"
+            android:contentDescription="@string/cd_add_song_to_favorites"
             app:srcCompat="@drawable/btn_favorite" />
 
     </LinearLayout>

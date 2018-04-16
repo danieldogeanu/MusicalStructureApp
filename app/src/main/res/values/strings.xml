@@ -19,6 +19,8 @@
     <string name="cd_playing">Playing</string>
     <string name="cd_empty">Empty List</string>
     <string name="cd_album">Album Art</string>
+    <string name="cd_add_song_to_playlist">Add Song To Playlist</string>
+    <string name="cd_add_song_to_favorites">Add Song To Favorites</string>
 
     <!--CATEGORIES/TABS-->
     <string name="cat_songs">Songs</string>
