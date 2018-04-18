@@ -7,11 +7,13 @@ import java.io.Serializable;
  */
 public class Song implements Serializable {
 
+    private static final int NO_IMAGE_RESOURCE = -1;
+
     private String mSongTitle;
     private String mSongArtist;
     private String mSongAlbum;
     private String mSongDuration;
-    private String mSongAlbumArt;
+    private int mSongAlbumArt = NO_IMAGE_RESOURCE;
 
     /**
      * The Song Object Constructor used for the cases where there's no Album Art.
@@ -33,9 +35,9 @@ public class Song implements Serializable {
      * @param songArtist The artist of the song.
      * @param songAlbum The album that contains this song.
      * @param songDuration The length of the song.
-     * @param songAlbumArt The file path of the Album Art associated with the song.
+     * @param songAlbumArt The resource ID of the Album Art associated with the song.
      */
-    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, String songAlbumArt) {
+    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, int songAlbumArt) {
         mSongTitle = songTitle;
         mSongArtist = songArtist;
         mSongAlbum = songAlbum;
@@ -64,13 +66,13 @@ public class Song implements Serializable {
     }
 
     /** @return Returns the file path of the Album Art for the Song. */
-    public String getSongAlbumArt() {
+    public int getSongAlbumArt() {
         return mSongAlbumArt;
     }
 
     /** @return Returns true if there's an AlbumArt; false if AlbumArt is empty. */
     public boolean hasAlbumArt() {
-        return (!mSongAlbumArt.isEmpty());
+        return (mSongAlbumArt != NO_IMAGE_RESOURCE);
     }
 
     /**
