@@ -11,7 +11,6 @@ public class Song implements Serializable {
     private String mSongArtist;
     private String mSongAlbum;
     private String mSongDuration;
-    private String mSongFilePath;
     private String mSongAlbumArt;
 
     /**
@@ -20,14 +19,12 @@ public class Song implements Serializable {
      * @param songArtist The artist of the song.
      * @param songAlbum The album that contains this song.
      * @param songDuration The length of the song.
-     * @param songFilePath The file path to this song.
      */
-    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, String songFilePath) {
+    public Song(String songTitle, String songArtist, String songAlbum, String songDuration) {
         mSongTitle = songTitle;
         mSongArtist = songArtist;
         mSongAlbum = songAlbum;
         mSongDuration = songDuration;
-        mSongFilePath = songFilePath;
     }
 
     /**
@@ -36,15 +33,13 @@ public class Song implements Serializable {
      * @param songArtist The artist of the song.
      * @param songAlbum The album that contains this song.
      * @param songDuration The length of the song.
-     * @param songFilePath The file path to this song.
      * @param songAlbumArt The file path of the Album Art associated with the song.
      */
-    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, String songFilePath, String songAlbumArt) {
+    public Song(String songTitle, String songArtist, String songAlbum, String songDuration, String songAlbumArt) {
         mSongTitle = songTitle;
         mSongArtist = songArtist;
         mSongAlbum = songAlbum;
         mSongDuration = songDuration;
-        mSongFilePath = songFilePath;
         mSongAlbumArt = songAlbumArt;
     }
 
@@ -73,19 +68,9 @@ public class Song implements Serializable {
         return mSongAlbumArt;
     }
 
-    /** @return Returns the MP3 file path for the Song. */
-    public String getSongFilePath() {
-        return mSongFilePath;
-    }
-
     /** @return Returns true if there's an AlbumArt; false if AlbumArt is empty. */
     public boolean hasAlbumArt() {
         return (!mSongAlbumArt.isEmpty());
-    }
-
-    /** @return Returns true if there's a file path to the MP3 file. */
-    public boolean hasFilePath() {
-        return (!mSongFilePath.isEmpty());
     }
 
     /**
