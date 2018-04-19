@@ -72,4 +72,16 @@ public class Utils {
 
     }
 
+    public static void toggleVisibility(View view) {
+        switch (view.getVisibility()) {
+            case View.GONE:
+            case View.INVISIBLE:
+                view.setVisibility(View.VISIBLE);
+                break;
+            case View.VISIBLE:
+                view.setVisibility(View.GONE);
+                break;
+        }
+    }
+
 }

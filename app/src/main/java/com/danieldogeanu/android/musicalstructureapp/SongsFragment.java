@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -26,8 +28,15 @@ public class SongsFragment extends Fragment {
         SongAdapter adapter = new SongAdapter(getActivity(), songs);
         listView.setAdapter(adapter);
 
-        // TODO: Add setOnItemClickListener to handle item clicks in order to play music.
-        // TODO: There are two kind of clicks that need to be handled: 1. On the item; to play music. 2. On the songDetails; to open Song Detail activity.
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                ImageView songPlayingIcon = (ImageView) view.findViewById(R.id.songPlaying);
+                Utils.toggleVisibility(songPlayingIcon);
+
+            }
+        });
 
         return rootView;
     }
