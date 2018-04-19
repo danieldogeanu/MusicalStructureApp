@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -22,18 +21,21 @@ public class SongsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.list, container, false);
 
         Data data = Data.getInstance();
-        ArrayList<Song> songs = data.getSongs();
+        final ArrayList<Song> songs = data.getSongs();
+        final MediaState mediaState = MediaState.getInstance();
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        SongAdapter adapter = new SongAdapter(getActivity(), songs);
+        SongAdapter adapter = new SongAdapter(getActivity(), songs, mediaState);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                ImageView songPlayingIcon = (ImageView) view.findViewById(R.id.songPlaying);
-                Utils.toggleVisibility(songPlayingIcon);
+                Song song = songs.get(position);
+                mediaState.setPlayingSong(song);
+
+                Utils.togglePlayingIcon(view);
 
             }
         });
