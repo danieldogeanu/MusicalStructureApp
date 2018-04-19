@@ -25,7 +25,7 @@ public class AlbumsFragment extends Fragment {
         final ArrayList<Album> albums = data.getAlbums();
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        AlbumAdapter adapter = new AlbumAdapter(getActivity(), albums, listView);
+        AlbumAdapter adapter = new AlbumAdapter(getActivity(), albums);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -25,7 +25,7 @@ public class ArtistsFragment extends Fragment {
         final ArrayList<Artist> artists = data.getArtists();
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        ArtistAdapter adapter = new ArtistAdapter(getActivity(), artists, listView);
+        ArtistAdapter adapter = new ArtistAdapter(getActivity(), artists);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

@@ -26,7 +26,7 @@ public class ListActivity extends AppCompatActivity {
             Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.artist_list_title));
 
             ArrayList<Song> songsByThisArtist = thisArtist.getSongsByArtist();
-            SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist, listView);
+            SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist);
             listView.setAdapter(adapter);
         }
 
@@ -34,7 +34,7 @@ public class ListActivity extends AppCompatActivity {
             Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.album_list_title));
 
             ArrayList<Song> songsOnThisAlbum = thisAlbum.getSongsInAlbum();
-            SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum, listView);
+            SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum);
             listView.setAdapter(adapter);
         }
 

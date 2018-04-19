@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -15,11 +14,8 @@ public class AlbumAdapter extends ArrayAdapter<Album> {
 
     public static final String LOG_TAG = AlbumAdapter.class.getSimpleName();
 
-    private ListView mAlbumListView;
-
-    public AlbumAdapter(Activity context, ArrayList<Album> albums, ListView view) {
+    public AlbumAdapter(Activity context, ArrayList<Album> albums) {
         super(context, 0, albums);
-        mAlbumListView = view;
     }
 
     @NonNull

@@ -23,7 +23,7 @@ public class SongsFragment extends Fragment {
         ArrayList<Song> songs = data.getSongs();
 
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        SongAdapter adapter = new SongAdapter(getActivity(), songs, listView);
+        SongAdapter adapter = new SongAdapter(getActivity(), songs);
         listView.setAdapter(adapter);
 
         // TODO: Add setOnItemClickListener to handle item clicks in order to play music.

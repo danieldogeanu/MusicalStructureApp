@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -15,11 +14,8 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
     public static final String LOG_TAG = SongAdapter.class.getSimpleName();
 
-    private ListView mSongListView;
-
-    public SongAdapter(Activity context, ArrayList<Song> songs, ListView view) {
+    public SongAdapter(Activity context, ArrayList<Song> songs) {
         super(context, 0, songs);
-        mSongListView = view;
     }
 
     @NonNull
