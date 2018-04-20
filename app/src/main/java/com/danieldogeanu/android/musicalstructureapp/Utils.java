@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Utils {
@@ -71,19 +70,6 @@ public class Utils {
             }
         });
 
-    }
-
-    public static void togglePlayingIcon(View view) {
-        ImageView songPlayingIcon = (ImageView) view.findViewById(R.id.songPlaying);
-        switch (songPlayingIcon.getVisibility()) {
-            case View.GONE:
-            case View.INVISIBLE:
-                songPlayingIcon.setVisibility(View.VISIBLE);
-                break;
-            case View.VISIBLE:
-                songPlayingIcon.setVisibility(View.GONE);
-                break;
-        }
     }
 
 }

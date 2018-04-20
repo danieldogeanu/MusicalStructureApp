@@ -13,6 +13,12 @@ import java.util.ArrayList;
 
 public class SongsFragment extends Fragment {
 
+    Data mData;
+    ArrayList<Song> mSongs;
+    MediaState mMediaState;
+    ListView mListView;
+    SongAdapter mAdapter;
+
     public SongsFragment() {}
 
     @Nullable
@@ -20,26 +26,33 @@ public class SongsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.list, container, false);
 
-        Data data = Data.getInstance();
-        final ArrayList<Song> songs = data.getSongs();
-        final MediaState mediaState = MediaState.getInstance();
+        mData = Data.getInstance();
+        mSongs = mData.getSongs();
+        mMediaState = MediaState.getInstance();
 
-        ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        SongAdapter adapter = new SongAdapter(getActivity(), songs, mediaState);
-        listView.setAdapter(adapter);
+        mListView = (ListView) rootView.findViewById(R.id.listView);
+        mAdapter = new SongAdapter(getActivity(), mSongs, mMediaState);
+        mListView.setAdapter(mAdapter);
+        mAdapter.setNotifyOnChange(true);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Song song = songs.get(position);
-                mediaState.setPlayingSong(song);
-
-                Utils.togglePlayingIcon(view);
+                Song song = mSongs.get(position);
+                mMediaState.togglePlayingSong(song, view);
 
             }
         });
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mAdapter = new SongAdapter(getActivity(), mSongs, mMediaState);
+        mListView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 }

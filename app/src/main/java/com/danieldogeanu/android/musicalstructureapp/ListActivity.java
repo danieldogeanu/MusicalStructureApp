@@ -29,7 +29,7 @@ public class ListActivity extends AppCompatActivity {
             Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.artist_list_title));
 
             final ArrayList<Song> songsByThisArtist = thisArtist.getSongsByArtist();
-            SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist, mediaState);
+            final SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist, mediaState);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -37,9 +37,7 @@ public class ListActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     Song song = songsByThisArtist.get(position);
-                    mediaState.setPlayingSong(song);
-
-                    Utils.togglePlayingIcon(view);
+                    mediaState.togglePlayingSong(song, view);
 
                 }
             });
@@ -49,7 +47,7 @@ public class ListActivity extends AppCompatActivity {
             Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.album_list_title));
 
             final ArrayList<Song> songsOnThisAlbum = thisAlbum.getSongsInAlbum();
-            SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum, mediaState);
+            final SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum, mediaState);
             listView.setAdapter(adapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,9 +55,7 @@ public class ListActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                     Song song = songsOnThisAlbum.get(position);
-                    mediaState.setPlayingSong(song);
-
-                    Utils.togglePlayingIcon(view);
+                    mediaState.togglePlayingSong(song, view);
 
                 }
             });
