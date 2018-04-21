@@ -7,16 +7,16 @@ import java.util.ArrayList;
  */
 public class Favorites {
 
-    /** Initialize the class Instance to be already available and thread-safe. */
+    // Initialize the class Instance as soon as possible in order to be thread-safe.
     private static Favorites INSTANCE = new Favorites();
 
-    /** The global Favorites list. */
+    // The global Favorites list.
     private ArrayList<Song> mFavorites = new ArrayList<>();
 
-    /** Private constructor, so it can't be accessed from outside the class. */
+    /** Private Faveorites Constructor, so it can't be accessed from outside the class. */
     private Favorites() {}
 
-    /** @return Always return the existing Instance of the class, as it's a Singleton. */
+    /** @return Always return the existing Instance of the class. */
     public static Favorites getInstance() {
         return(INSTANCE);
     }

@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+/**
+ * Class that initializes the Detail Activity screen.
+ */
 public class DetailActivity extends AppCompatActivity {
 
     @Override
