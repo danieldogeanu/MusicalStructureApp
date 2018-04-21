@@ -8,6 +8,7 @@ public class MediaState {
     private static final MediaState INSTANCE = new MediaState();
 
     private Song currentSongPlaying = new Song("", "", "", "");
+    private View currentView = null;
 
     private MediaState() {}
 
@@ -15,25 +16,42 @@ public class MediaState {
         return(INSTANCE);
     }
 
-    public Song getCurrentSongPlaying() {
-        return currentSongPlaying;
-    }
+    public void togglePlayingSong(Song song, View newView) {
+        ImageView oldPlayingIcon = null;
+        if (currentView != null) {
+            oldPlayingIcon = (ImageView) currentView.findViewById(R.id.songPlaying);
+        }
+        ImageView newPlayingIcon = (ImageView) newView.findViewById(R.id.songPlaying);
 
-    public void togglePlayingSong(Song song, View view) {
-        ImageView songPlayingIcon = (ImageView) view.findViewById(R.id.songPlaying);
         if ((currentSongPlaying != null) && !song.getSongTitle().equals(currentSongPlaying.getSongTitle())) {
             currentSongPlaying = song;
-            songPlayingIcon.setVisibility(View.VISIBLE);
+            if (currentView == null) {
+                newPlayingIcon.setVisibility(View.VISIBLE);
+                currentView = newView;
+            } else if ((currentView != null) && (currentView != newView)) {
+                if (oldPlayingIcon != null) oldPlayingIcon.setVisibility(View.GONE);
+                newPlayingIcon.setVisibility(View.VISIBLE);
+                currentView = newView;
+            }
+        } else if ((currentSongPlaying != null) && song.getSongTitle().equals(currentSongPlaying.getSongTitle())) {
+            if ((currentView != null) && (currentView != newView)) {
+                if (oldPlayingIcon != null) oldPlayingIcon.setVisibility(View.GONE);
+                newPlayingIcon.setVisibility(View.VISIBLE);
+                currentView = newView;
+            } else if ((currentView != null) && (currentView == newView)) {
+                newPlayingIcon.setVisibility(View.GONE);
+                currentView = null;
+            }
         } else {
             currentSongPlaying = new Song("", "", "", "");
-            songPlayingIcon.setVisibility(View.GONE);
+            if (oldPlayingIcon != null) oldPlayingIcon.setVisibility(View.GONE);
+            newPlayingIcon.setVisibility(View.GONE);
+            currentView = null;
         }
     }
 
     public boolean isSongPlaying(Song song) {
         return ((currentSongPlaying != null) && song.getSongTitle().equals(currentSongPlaying.getSongTitle()));
     }
-
-    // TODO: Add a way to have only one item active in the list at one time.
 
 }

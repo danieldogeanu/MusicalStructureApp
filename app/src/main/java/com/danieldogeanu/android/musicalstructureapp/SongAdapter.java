@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -39,10 +38,7 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         Utils.addDetailsButtonIntent(listItemView, R.id.songDetails, DetailActivity.class, "song_data", currentSong);
 
-        ImageView songPlayingIcon = (ImageView) listItemView.findViewById(R.id.songPlaying);
-        if (mMediaState.isSongPlaying(currentSong)) {
-            songPlayingIcon.setVisibility(View.VISIBLE);
-        }
+        if (mMediaState.isSongPlaying(currentSong)) mMediaState.togglePlayingSong(currentSong, listItemView);
 
         return listItemView;
     }
