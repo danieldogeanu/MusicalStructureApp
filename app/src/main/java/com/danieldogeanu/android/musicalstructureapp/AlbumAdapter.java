@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class AlbumAdapter extends ArrayAdapter<Album> {
 
-    public static final String LOG_TAG = AlbumAdapter.class.getSimpleName();
-
     public AlbumAdapter(Activity context, ArrayList<Album> albums) {
         super(context, 0, albums);
     }

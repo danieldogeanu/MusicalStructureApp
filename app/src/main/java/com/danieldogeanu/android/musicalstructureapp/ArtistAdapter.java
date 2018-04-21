@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class ArtistAdapter extends ArrayAdapter<Artist> {
 
-    public static final String LOG_TAG = ArtistAdapter.class.getSimpleName();
-
     public ArtistAdapter(Activity context, ArrayList<Artist> artists) {
         super(context, 0, artists);
     }

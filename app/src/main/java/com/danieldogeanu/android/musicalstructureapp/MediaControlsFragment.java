@@ -12,7 +12,12 @@ public class MediaControlsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.media_controls, container, false);
+        View rootView = inflater.inflate(R.layout.media_controls, container, false);
+
+        Utils.setTextToView(rootView, R.id.seekCurrentTime, "0:00");
+        Utils.setTextToView(rootView, R.id.seekTotalTime, "4:23");
+
+        return rootView;
     }
 
 }

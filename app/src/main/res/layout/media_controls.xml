@@ -22,7 +22,7 @@
                 <TextView
                     android:id="@+id/seekCurrentTime"
                     style="@style/SeekTime"
-                    android:text="0:34" />
+                    tools:text="0:34" />
 
                 <SeekBar
                     android:id="@+id/seekBar"
@@ -32,7 +32,7 @@
                 <TextView
                     android:id="@+id/seekTotalTime"
                     style="@style/SeekTime"
-                    android:text="4:23" />
+                    tools:text="4:23" />
 
             </LinearLayout>
 

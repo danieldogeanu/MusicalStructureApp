@@ -21,11 +21,6 @@ public class Favorites {
         return(INSTANCE);
     }
 
-    /** @return Returns the Favorites list to be used in Favorites ListActivity. */
-    public ArrayList<Song> getFavorites() {
-        return mFavorites;
-    }
-
     /**
      * Add the Song to the Favorites list, if there isn't already one.
      * @param song The Song to be added.

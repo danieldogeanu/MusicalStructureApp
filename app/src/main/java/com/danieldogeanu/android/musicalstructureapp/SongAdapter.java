@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class SongAdapter extends ArrayAdapter<Song> {
 
-    public static final String LOG_TAG = SongAdapter.class.getSimpleName();
-
     private MediaState mMediaState;
 
     public SongAdapter(Activity context, ArrayList<Song> songs, MediaState mediaState) {
