@@ -17,17 +17,13 @@ import java.util.ArrayList;
  */
 public class SongAdapter extends ArrayAdapter<Song> {
 
-    private MediaState mMediaState;
-
     /**
      * SongAdapter Constructor. Accepts 3 parameters.
      * @param context The Activity on which this adapter will run.
      * @param songs The ArrayList with all the songs.
-     * @param mediaState The MediaState instance, to keep track of currently playing song.
      */
-    public SongAdapter(Activity context, ArrayList<Song> songs, MediaState mediaState) {
+    public SongAdapter(Activity context, ArrayList<Song> songs) {
         super(context, 0, songs);
-        mMediaState = mediaState;
     }
 
     /**
@@ -57,9 +53,6 @@ public class SongAdapter extends ArrayAdapter<Song> {
 
         // Attach intent to the Song Details Button to open the Detail Activity
         Utils.addDetailsButtonIntent(listItemView, R.id.songDetails, DetailActivity.class, "song_data", currentSong);
-
-        // See if this Song is currently playing and display the Song Playing Icon
-        if (mMediaState.isSongPlaying(currentSong)) mMediaState.togglePlayingSong(currentSong, listItemView);
 
         // Return the fully assembled Song Item
         return listItemView;

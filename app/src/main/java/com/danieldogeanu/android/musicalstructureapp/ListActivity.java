@@ -2,8 +2,6 @@ package com.danieldogeanu.android.musicalstructureapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -25,33 +23,18 @@ public class ListActivity extends AppCompatActivity {
         // Get the ListView
         ListView listView = (ListView) findViewById(R.id.activityListView);
 
-        // Get the Data and MediaState
+        // Get the Data
         Artist thisArtist = (Artist) getIntent().getSerializableExtra("artist_data");
         Album thisAlbum = (Album) getIntent().getSerializableExtra("album_data");
-        final MediaState mediaState = MediaState.getInstance();
 
         if (thisArtist != null) {
             // Set List Activity Title
             Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.artist_list_title));
 
             // Populate the ListView with Songs by current Artist
-            final ArrayList<Song> songsByThisArtist = thisArtist.getSongsByArtist();
-            final SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist, mediaState);
+            ArrayList<Song> songsByThisArtist = thisArtist.getSongsByArtist();
+            SongAdapter adapter = new SongAdapter(ListActivity.this, songsByThisArtist);
             listView.setAdapter(adapter);
-
-            // Set the OnItemClickListener() to handle the item clicks
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    // Get the current Song
-                    Song song = songsByThisArtist.get(position);
-
-                    // Toggle the currently playing Song and the Song Playing Icon
-                    mediaState.togglePlayingSong(song, view);
-
-                }
-            });
         }
 
         if (thisAlbum != null) {
@@ -59,23 +42,9 @@ public class ListActivity extends AppCompatActivity {
             Utils.setTextToView(ListActivity.this, R.id.headerTitle, getText(R.string.album_list_title));
 
             // Populate the ListView with Songs in the current Album
-            final ArrayList<Song> songsOnThisAlbum = thisAlbum.getSongsInAlbum();
-            final SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum, mediaState);
+            ArrayList<Song> songsOnThisAlbum = thisAlbum.getSongsInAlbum();
+            SongAdapter adapter = new SongAdapter(ListActivity.this, songsOnThisAlbum);
             listView.setAdapter(adapter);
-
-            // Set the OnItemClickListener() to handle the item clicks
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                    // Get the current Song
-                    Song song = songsOnThisAlbum.get(position);
-
-                    // Toggle the currently playing Song and the Song Playing Icon
-                    mediaState.togglePlayingSong(song, view);
-
-                }
-            });
         }
 
     }
